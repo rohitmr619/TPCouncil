@@ -18,6 +18,67 @@ router.get('/data', auth, async (req, res) => {
   }
 });
 
+// Get player stats from Clash Royale API
+router.get('/player-stats/:playerTag', auth, async (req, res) => {
+  try {
+    const { playerTag } = req.params;
+    
+    // Remove # if present
+    const cleanPlayerTag = playerTag.startsWith('#') ? playerTag.substring(1) : playerTag;
+    
+    if (!process.env.CLASH_ROYALE_API_KEY) {
+      throw new Error('Clash Royale API key is not configured');
+    }
+
+    // Fetch player data from Clash Royale API
+    const apiUrl = `https://api.clashroyale.com/v1/players/%23${cleanPlayerTag}`;
+    
+    const response = await axios.get(apiUrl, {
+      headers: {
+        'Authorization': `Bearer ${process.env.CLASH_ROYALE_API_KEY}`,
+        'Accept': 'application/json',
+      },
+      validateStatus: function (status) {
+        return status < 500; // Resolve only if the status code is less than 500
+      }
+    });
+
+    if (response.status === 403) {
+      throw new Error('Invalid API key or unauthorized access');
+    }
+
+    if (response.status === 404) {
+      throw new Error('Player tag not found');
+    }
+
+    if (response.status !== 200) {
+      throw new Error(`API request failed with status ${response.status}`);
+    }
+
+    // Send player data to client
+    res.json(response.data);
+  } catch (err) {
+    console.error('Error fetching player stats:', err.message);
+    if (err.response) {
+      console.error('Error response data:', JSON.stringify(err.response.data, null, 2));
+      console.error('Error response status:', err.response.status);
+    }
+    
+    if (err.response?.status === 404) {
+      return res.status(404).json({ message: 'Invalid player tag' });
+    }
+    if (err.response?.status === 403) {
+      return res.status(500).json({ message: 'Clash Royale API key is invalid' });
+    }
+    
+    res.status(500).json({ 
+      message: 'Error fetching player data from Clash Royale API',
+      error: err.message,
+      details: err.response?.data || 'No additional details'
+    });
+  }
+});
+
 // Update player tag and fetch trophy count
 router.post('/player-tag', auth, async (req, res) => {
   try {

@@ -46,7 +46,7 @@ const Login = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: `url(${process.env.PUBLIC_URL}/login.png) center/cover no-repeat fixed`,
+        background: `url(${process.env.PUBLIC_URL}/background.jpg) center/cover no-repeat fixed`,
         position: 'relative',
         '&::before': {
           content: '""',
@@ -55,7 +55,7 @@ const Login = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'rgba(255, 255, 255, 0.85)',
+          background: 'rgba(255, 255, 255, 0.65)',
           zIndex: 0,
         },
       }}
@@ -73,11 +73,6 @@ const Login = () => {
               backdropFilter: 'blur(10px)',
               borderRadius: '16px',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-              transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
-              '&:hover': {
-                transform: 'translateY(-8px) scale(1.02)',
-                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)',
-              },
             }}
           >
             <Typography
@@ -107,9 +102,6 @@ const Login = () => {
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-4px)',
-                    },
                   },
                 }}
               />
@@ -127,9 +119,6 @@ const Login = () => {
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-4px)',
-                    },
                   },
                 }}
               />

@@ -49,6 +49,24 @@ const Register = () => {
     setShowPassword(!showPassword);
   };
 
+  const pokemonStyles = {
+    fonts: {
+      heading: "'Press Start 2P', cursive",
+      subheading: "'Press Start 2P', cursive",
+    },
+    colors: {
+      red: "#FF3B3B",
+      blue: "#3B4CCA",
+      yellow: "#FFDE00",
+      black: "#2A2A2A",
+    },
+    shadows: {
+      soft: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      medium: "0 6px 12px rgba(0, 0, 0, 0.15)",
+      hard: "0 10px 20px rgba(0, 0, 0, 0.2)",
+    },
+  };
+
   return (
     <Box
       sx={{
@@ -57,6 +75,10 @@ const Register = () => {
         height: "100vh",
         background: `url(${process.env.PUBLIC_URL}/background.jpg) center/cover no-repeat`,
         position: "relative",
+        fontFamily: "'Press Start 2P', cursive", // 👈 main fix
+        "*": {
+          fontFamily: "'Press Start 2P', cursive !important", // 👈 force override
+        },
       }}
     >
       {/* Left side register panel - 40% width */}

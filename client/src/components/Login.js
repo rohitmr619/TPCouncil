@@ -48,6 +48,24 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  const pokemonStyles = {
+    fonts: {
+      heading: "'Press Start 2P', cursive",
+      subheading: "'Press Start 2P', cursive",
+    },
+    colors: {
+      red: "#FF3B3B",
+      blue: "#3B4CCA",
+      yellow: "#FFDE00",
+      black: "#2A2A2A",
+    },
+    shadows: {
+      soft: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      medium: "0 6px 12px rgba(0, 0, 0, 0.15)",
+      hard: "0 10px 20px rgba(0, 0, 0, 0.2)",
+    },
+  };
+
   return (
     <Box
       sx={{
@@ -88,14 +106,16 @@ const Login = () => {
               component="h1"
               variant="h4"
               sx={{
-                color: "#FF3B3B",
+                color: pokemonStyles.colors.red,
                 mb: 3,
+                fontFamily: pokemonStyles.fonts.heading,
                 fontWeight: "bold",
                 textShadow: "2px 2px 4px rgba(0, 0, 0, 0.1)",
               }}
             >
               Sign In
             </Typography>
+
             <Box
               component="form"
               onSubmit={handleSubmit}
@@ -112,12 +132,20 @@ const Login = () => {
                 autoFocus
                 value={formData.email}
                 onChange={handleChange}
+                InputLabelProps={{
+                  sx: {
+                    fontFamily: pokemonStyles.fonts.heading,
+                    fontSize: "15px",
+                  },
+                }}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     transition: "all 0.3s ease",
+                    fontFamily: pokemonStyles.fonts.heading,
                   },
                 }}
               />
+
               <TextField
                 margin="normal"
                 required
@@ -129,6 +157,12 @@ const Login = () => {
                 autoComplete="current-password"
                 value={formData.password}
                 onChange={handleChange}
+                InputLabelProps={{
+                  sx: {
+                    fontFamily: pokemonStyles.fonts.heading,
+                    fontSize: "15px",
+                  },
+                }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -141,6 +175,9 @@ const Login = () => {
                       </IconButton>
                     </InputAdornment>
                   ),
+                  sx: {
+                    fontFamily: pokemonStyles.fonts.heading,
+                  },
                 }}
                 sx={{
                   "& .MuiOutlinedInput-root": {
@@ -148,6 +185,7 @@ const Login = () => {
                   },
                 }}
               />
+
               {error && (
                 <Typography color="error" align="center" sx={{ mt: 1 }}>
                   {error}
@@ -160,8 +198,10 @@ const Login = () => {
                 sx={{
                   mt: 3,
                   mb: 2,
-                  background: "#FF3B3B",
+                  background: pokemonStyles.colors.red,
                   color: "#FFFFFF",
+                  fontFamily: pokemonStyles.fonts.heading,
+                  fontSize: "12px",
                   transition: "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
                   "&:hover": {
                     background: "#CC0000",
@@ -172,12 +212,14 @@ const Login = () => {
               >
                 Sign In
               </Button>
+
               <Grid container justifyContent="center">
                 <Grid item>
                   <Link
                     href="/register"
                     variant="body2"
                     sx={{
+                      fontFamily: pokemonStyles.fonts.heading,
                       color: "#3B4CCA",
                       textDecoration: "none",
                       transition: "all 0.3s ease",

@@ -20,6 +20,16 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 6
   },
+  playerTag: {
+    type: String,
+    unique: true,
+    sparse: true,
+    trim: true
+  },
+  trophyCount: {
+    type: Number,
+    default: 0
+  },
   gameTags: {
     clashRoyale: {
       type: String,

@@ -10,6 +10,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import LoginSuccess from "./components/LoginSuccess";
+import Dashboard from "./components/Dashboard";
 
 const theme = createTheme({
   palette: {
@@ -118,6 +119,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login-success" element={<LoginSuccess />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/" element={<Navigate to="/login" replace />} />
         </Routes>
       </Router>

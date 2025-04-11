@@ -3,6 +3,13 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
+// Debug environment variables
+console.log('Environment variables loaded:');
+console.log('MONGODB_URI:', process.env.MONGODB_URI ? 'Set' : 'Not set');
+console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'Set' : 'Not set');
+console.log('CLASH_ROYALE_API_KEY:', process.env.CLASH_ROYALE_API_KEY ? 'Set' : 'Not set');
+console.log('CLASH_ROYALE_API_KEY length:', process.env.CLASH_ROYALE_API_KEY ? process.env.CLASH_ROYALE_API_KEY.length : 0);
+
 const app = express();
 
 // Middleware
@@ -16,6 +23,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/user', require('./routes/user'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -36,7 +36,7 @@ const Login = () => {
         formData
       );
       localStorage.setItem("token", response.data.token);
-      navigate("/login-success");
+      navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred");
     }

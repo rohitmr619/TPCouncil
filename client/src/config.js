@@ -1,5 +1,6 @@
 const config = {
-  apiBaseUrl: process.env.REACT_APP_API_BASE_URL || 'http://20.244.50.82:5000'
+  // Use environment variable if set, otherwise use localhost for development
+  apiBaseUrl: process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000'
 };
 
 export default config; 

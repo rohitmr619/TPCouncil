@@ -114,7 +114,7 @@ const Login = () => {
                 textShadow: "2px 2px 4px rgba(0, 0, 0, 0.1)",
               }}
             >
-              Sign In ABC
+              Sign In
             </Typography>
 
             <Box

@@ -53,6 +53,8 @@ import {
   Radar,
 } from "recharts";
 
+import config from "../config";
+
 const Overview = ({ playerTag }) => {
   const [loading, setLoading] = useState(true);
   const [playerData, setPlayerData] = useState(null);
@@ -71,7 +73,7 @@ const Overview = ({ playerTag }) => {
 
         // Fetch user stats using the stored player tag
         const response = await fetch(
-          `http://localhost:5000/api/user/player-stats/${playerTag}`,
+          `${config.apiBaseUrl}/api/user/player-stats/${playerTag}`,
           {
             headers: {
               "x-auth-token": token,

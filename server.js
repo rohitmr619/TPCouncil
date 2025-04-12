@@ -13,7 +13,10 @@ console.log('CLASH_ROYALE_API_KEY length:', process.env.CLASH_ROYALE_API_KEY ? p
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://20.244.50.82:3000'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Connect to MongoDB

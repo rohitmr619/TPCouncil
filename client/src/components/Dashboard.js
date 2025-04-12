@@ -28,6 +28,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import Overview from "./Overview";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import config from "../config";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const Dashboard = () => {
     const fetchUserData = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/api/user/data", {
+        const response = await fetch(`${config.apiBaseUrl}/api/user/data`, {
           headers: {
             "x-auth-token": token,
           },
@@ -525,4 +526,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Dashboard; 

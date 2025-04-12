@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import config from "../config";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Settings = () => {
     const fetchUserData = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/api/user/data", {
+        const response = await fetch(`${config.apiBaseUrl}/api/user/data`, {
           headers: {
             "x-auth-token": token,
           },
@@ -76,7 +77,7 @@ const Settings = () => {
       setSavingTag(true);
       const token = localStorage.getItem("token");
       
-      const response = await fetch("http://localhost:5000/api/user/player-tag", {
+      const response = await fetch(`${config.apiBaseUrl}/api/user/player-tag`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

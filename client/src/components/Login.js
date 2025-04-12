@@ -12,6 +12,7 @@ import {
   Grid,
   Fade,
 } from "@mui/material";
+import config from "../config";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${config.apiBaseUrl}/api/auth/login`,
         formData
       );
       localStorage.setItem("token", response.data.token);

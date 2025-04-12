@@ -12,6 +12,7 @@ import {
   Grid,
   Fade,
 } from "@mui/material";
+import config from "../config";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        `${config.apiBaseUrl}/api/auth/register`,
         formData
       );
       localStorage.setItem("token", response.data.token);

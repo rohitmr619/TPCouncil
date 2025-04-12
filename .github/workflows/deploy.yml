@@ -3,18 +3,32 @@ name: Auto Deploy to VM
 on:
   push:
     branches:
-      - prod
+      - production
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: SSH and deploy
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+
+      - name: Add SSH Host to Known Hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.VM_HOST }} >> ~/.ssh/known_hosts
+
+      - name: SSH and Deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
+            # Ensure we're in the right directory and execute the script
             cd ~/TPCouncil
             ./deploy.sh
+          
+      - name: Cleanup SSH
+        run: rm -rf ~/.ssh

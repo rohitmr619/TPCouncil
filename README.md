@@ -12,10 +12,10 @@ TP Council is a gaming statistics aggregation platform that currently focuses on
 - **Clan Integration**: View and manage clan information
 
 ## Screenshots
-![Screenshot 2025-04-12 192050](https://github.com/user-attachments/assets/15ebc1b4-238f-4ec5-975e-ae7d94467577)
+
 ![Screenshot 2025-04-12 191938](https://github.com/user-attachments/assets/38eece54-b5b8-46a8-b48b-59741bcd61e4)
 
-
+![Screenshot 2025-04-12 192050](https://github.com/user-attachments/assets/15ebc1b4-238f-4ec5-975e-ae7d94467577)
 
 ## Tech Stack
 

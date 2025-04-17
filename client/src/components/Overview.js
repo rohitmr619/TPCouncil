@@ -31,6 +31,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import SportsKabaddiIcon from "@mui/icons-material/SportsKabaddi";
 import PersonIcon from "@mui/icons-material/Person";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 import {
   PieChart,
@@ -319,6 +320,10 @@ const Overview = ({ playerTag }) => {
     wins && losses ? Math.round((wins / (wins + losses)) * 100) : 0;
   const totalBattles = wins + losses || 0;
   const progressToNextLevel = Math.min(65, Math.random() * 100);
+  const yearsBadge = playerData.badges.find(
+    (badge) => badge.name === "YearsPlayed"
+  );
+  const yearsPlayed = yearsBadge ? yearsBadge.level : 0;
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -429,6 +434,24 @@ const Overview = ({ playerTag }) => {
                 sx={{
                   bgcolor: "rgba(255, 59, 59, 0.1)",
                   color: pokemonStyles.colors.red,
+                  fontWeight: "bold",
+                  fontFamily: pokemonStyles.fonts.subheading,
+                  fontSize: "0.6rem",
+                }}
+              />
+
+              <Chip
+                size="small"
+                icon={
+                  <AccessTimeIcon
+                    fontSize="small"
+                    color="pokemonStyles.colors.blue"
+                  />
+                } // Material UI time icon
+                label={`${yearsPlayed || 0} yrs`}
+                sx={{
+                  bgcolor: "rgba(59, 130, 246, 0.1)", // subtle blue background
+                  color: pokemonStyles.colors.blue, // assuming a defined blue in your style config
                   fontWeight: "bold",
                   fontFamily: pokemonStyles.fonts.subheading,
                   fontSize: "0.6rem",

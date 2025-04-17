@@ -341,38 +341,7 @@ const Dashboard = () => {
               iconPosition="start"
               label="Leaderboard"
             />
-            <Tab
-              icon={<PeopleIcon fontSize="small" />}
-              iconPosition="start"
-              label="Friends"
-            />
-            <Tab
-              icon={<TimelineIcon fontSize="small" />}
-              iconPosition="start"
-              label="Win Predictor"
-            />
           </Tabs>
-
-          <Tooltip title="Notifications">
-            <IconButton
-              sx={{
-                color: pokemonStyles.colors.blue,
-                "&:hover": { color: pokemonStyles.colors.red },
-              }}
-            >
-              <Badge
-                badgeContent={2}
-                sx={{
-                  "& .MuiBadge-badge": {
-                    bgcolor: pokemonStyles.colors.red,
-                    color: "white",
-                  },
-                }}
-              >
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-          </Tooltip>
 
           <Tooltip title="Settings">
             <IconButton
@@ -457,8 +426,6 @@ const Dashboard = () => {
                   >
                     {activeTab === 0 && "Player Overview"}
                     {activeTab === 1 && "Global Leaderboard"}
-                    {activeTab === 2 && "Friends & Clans"}
-                    {activeTab === 3 && "Battle Predictor"}
                   </Typography>
                 </Box>
 
@@ -501,20 +468,6 @@ const Dashboard = () => {
                         </Typography>
                       </Box>
                     )}
-                    {activeTab === 2 && (
-                      <Box sx={{ textAlign: "center", py: 4 }}>
-                        <Typography variant="h5" sx={{ color: "#3B4CCA" }}>
-                          Friends feature coming soon...
-                        </Typography>
-                      </Box>
-                    )}
-                    {activeTab === 3 && (
-                      <Box sx={{ textAlign: "center", py: 4 }}>
-                        <Typography variant="h5" sx={{ color: "#3B4CCA" }}>
-                          Win Predictor coming soon...
-                        </Typography>
-                      </Box>
-                    )}
                   </>
                 )}
               </Paper>
@@ -526,4 +479,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard; 
+export default Dashboard;
